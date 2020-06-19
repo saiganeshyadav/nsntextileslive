@@ -1,0 +1,83 @@
+{% load static %}
+{% static "images" as baseURL %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="main.jx"><</script>
+    <title>Suits</title>
+</head>
+<style>
+    body {
+  background-image: url('/static/images/dark.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+h1{
+border-right-style: solid;
+border-left-style: solid;
+border-top-style: solid;
+border-bottom-style: solid;
+border-top-width:7px;
+border-left-width:1px;
+border-right-width:5px;
+border-bottom-width:1px;
+color:white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 6px;
+
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+
+button{
+
+background-color:green;
+color:white;
+text-align: center;
+cursor: pointer;
+}
+
+
+
+
+</style>
+<body>
+<h1>{{cname}}   <span style="float:right"><a href="/cart/viewing" ><button>Cart</button></a><a href="/" ><button>Home</button></a></span></h1>
+
+<div class="row">
+    {% for item in suits %}
+    <div class="column">
+        <a href="/materials/{{item.Item_name}}"><img src="{{item.image.url}}" alt="image not found" style="width:100%"></a>
+        {% if item.offer %}
+        <div class="text-block">Special Offer</div>
+        {% endif %}
+        <div><a href="/materials/{{item.Item_name}}" style="color:white"><strong>{{item.Item_name}}</strong></a></div>
+        <div><p style="color:white"><strong>{{item.description}}</strong></p></div>
+        <div style="color:white"><strong>Rs.{{item.price}}</strong></div>
+    </div>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="main.jx"><</script>
+    <link rel="stylesheet" type="text/css" href="/static/styles/login_style.css">
+
+
+    <script>
+function validate() {
+  var x = document.forms["validating"]["first_name"].value;
+  var a = document.forms["validating"]["last_name"].value;
+  var b = document.forms["validating"]["username"].value;
+  var c = document.forms["validating"]["email"].value;
+  var d = document.forms["validating"]["password1"].value;
+  var e = document.forms["validating"]["password2"].value;
+  if (x == "" || x == null) {
+    alert("first name must be filled out");
+    return false;
+  }
+  else if (a == "" || a == null ) {
+  alert("last name must be filled out");
+    return false;
+    }
+   else if (b == "" || b == null ) {
+  alert("User name must be filled out");
+    return false;
+    }
+    else if (c == "" || c == null ) {
+  alert("Email must be filled out");
+    return false;
+    }
+    else if (d == "" || d == null ) {
+  alert("Password must be filled out");
+    return false;
+    }
+    else if (e == "" || e == null ) {
+  alert("Confirm Password must be filled out");
+    return false;
+    }
+}
+</script>
+
+
+</head>
+<style>
+    ::placeholder{
+    color:white;
+    opacity:1;
+    }
+
+</style>
+
+<body>
+<div class="login-box">
+    <h1>Registration</h1>
+    <form name="validating" action="register"  onsubmit="return validate()" method="post">
+    {% csrf_token %}
+    <div class="textbox">
+        <input type="text" placeholder="First name"  name="first_name" value="">
+    </div>
+    <div class="textbox">
+        <input type="text" placeholder="Last name" name="last_name" value="">
+    </div>
+    <div class="textbox">
+        <input type="text" placeholder="Username" name="username" value="">
+    </div>
+    <div class="textbox">
+        <input type="email" placeholder="Email" name="email" value="">
+    </div>
+    <div class="textbox">
+        <input type="password" placeholder="Password" name="password1" value="">
+    </div>
+    <div class="textbox">
+        <input type="password" placeholder="Confirm Password" name="password2" value="">
+    </div>
+    <input class="btn" type="submit">
+    </form>
+    <div align="center">
+        {% for message in messages %}
+        <h3 style="color:red"> {{message}}</h3>
+        {%endfor%}
+    </div>
+
+</div>
+
+
+</body>
+</html>

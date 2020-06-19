@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>order details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="main.jx"><</script>
+    <link rel="stylesheet" type="text/css" href="/static/styles/login_style.css">
+
+
+    <script>
+function test1() {
+  var a = document.forms["testyou"]["shop_name"].value;
+  var b = document.forms["testyou"]["adress"].value;
+  var c = document.forms["testyou"]["shop_email"].value;
+  var d = document.forms["testyou"]["shop_number"].value;
+  if (a == "" || a == null) {
+    alert("Shop name must be filled out");
+    return false;
+  }
+  else if (b == "" || b == null ) {
+  alert("Adress must be filled out");
+    return false;
+    }
+
+  else if (c == "" || c == null ) {
+  alert("Email must be filled out");
+    return false;
+    }
+
+  else if (d == "" || d == null ) {
+  alert("Mobile no. must be filled out");
+    return false;
+    }
+
+
+   }
+
+   </script>
+
+
+
+</head>
+
+<style>
+    ::placeholder{
+    color:white;
+    opacity:1;
+    }
+
+</style>
+
+<body>
+
+<div class="login-box">
+    <h1>Details</h1>
+    <form action="/cart/order_saving" name="testyou" method="post" onsubmit="return test1()">
+    {% csrf_token %}
+    <div class="textbox">
+
+        <input type="text" placeholder="Shop name" name="shop_name">
+    </div>
+    <div class="textbox">
+
+        <input type="text" placeholder="Adress" name="adress">
+    </div>
+     <div class="textbox">
+
+        <input type="email" placeholder="Email" name="shop_email" value="{{user.email}}">
+    </div>
+     <div class="textbox">
+        <input type="number" placeholder="Phn.No." name="shop_number">
+    </div>
+
+
+     <div class="textbox">
+            <input type="text"  name="person" value="{{user.username}}" readonly><br/>
+        </div>
+        <div class="textbox">
+            <input type="text" name="ord_name" value="{{ord_name}}" readonly><br/>
+        </div>
+        <div class="textbox">
+            <input type="number" name="ord_pcs" value="{{ord_pcs}}" readonly><br/>
+        </div>
+        <div class="textbox">
+            <input type="text" name="ord_size" value="{{ord_size}}" readonly ><br/>
+        </div>
+        <div class="textbox">
+            <input type="number" name="ord_price" value="{{ord_price}}" readonly><br/>
+        </div>
+        <div class="textbox">
+            <input type="text" name="ord_img" value="pics/{{ord_img}}" readonly ><br/>
+        </div>
+
+        <div class="textbox">
+            <input type="number" name="ord_id" value="{{ord_id}}" readonly ><br/>
+        </div>
+
+
+
+    <input class="btn" type="submit" value="Place Order">
+
+    </form>
+
+</div>
+
+
+
+</body>
+</html>

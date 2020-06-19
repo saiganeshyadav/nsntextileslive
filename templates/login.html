@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="main.jx"><</script>
+    <link rel="stylesheet" type="text/css" href="/static/styles/login_style.css">
+
+    <script>
+function check() {
+  var x = document.forms["checking"]["username"].value;
+  var y = document.forms["checking"]["password"].value;
+  if (x == "" || x == null) {
+    alert("User name must be filled out");
+    return false;
+  }
+  else if (y == "" || y == null ) {
+  alert("Password must be filled out");
+    return false;
+    }
+
+   }
+
+   </script>
+
+</head>
+<style>
+    ::placeholder{
+    color:white;
+    opacity:1;
+    }
+
+</style>
+
+<body>
+<div class="login-box">
+    <h1>Login</h1>
+    <form action="login" name="checking" method="post" onsubmit="return check()">
+    {% csrf_token %}
+    <div class="textbox">
+        <i class="fa fa-user" aria-hidden="true"></i>
+        <input type="text" placeholder="Username" name="username">
+    </div>
+    <div class="textbox">
+        <i class="fa fa-lock" aria-hidden="true"></i>
+        <input type="password" placeholder="Password" name="password">
+    </div>
+    <input class="btn" type="submit">
+    <a href="register" style="color:red">Create account?</a>
+    </form>
+    <div align="center">
+        {% for message in messages %}
+        <h3 style="color:red"> {{message}}</h3>
+        {%endfor%}
+    </div>
+</div>
+
+</body>
+</html>
